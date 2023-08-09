@@ -1,3 +1,15 @@
+/*----------------------------------------------------------------
+AUTHOR: spexcher
+Name: Gourab Modak
+email: gm2623@cse.jgec.ac.in
+Institution: Jalpaiguri Government Engineering College (B. Tech UG CSE 4 year)
+Github: https://github.com/gauravthedeveloper/
+linkedin : https://www.linkedin.com/in/gourabmodak/
+codeforces : https://codeforces.com/profile/sectumsempra07/
+codechef : https://www.codechef.com/users/sectumsempra07/
+leetcode : https://leetcode.com/sectumsempra07/
+--------------------------------------------------------------------
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -5,15 +17,15 @@
 #include <math.h>
 void triangleRotate(int xx1, int xx2, int xx3, int yy1, int yy2, int yy3, int angle = 0)
 {
-    int cx = (xx1 + xx2 + xx3) / 3;
-    int cy = (yy1 + yy2 + yy3) / 3;
+    int cx = (int)(xx1 + xx2 + xx3) / 3;
+    int cy = (int)(yy1 + yy2 + yy3) / 3;
     double theta = (double)(angle % 180) * M_PI / 180;
-    xx1 = xx1 - cx;
-    xx2 = xx2 - cx;
-    xx3 = xx3 - cx;
-    yy1 = yy1 - cy;
-    yy2 = yy2 - cy;
-    yy3 = yy3 - cy;
+    // xx1 = xx1 - cx;
+    // xx2 = xx2 - cx;
+    // xx3 = xx3 - cx;
+    // yy1 = yy1 - cy;
+    // yy2 = yy2 - cy;
+    // yy3 = yy3 - cy;
 
     xx1 = (int)(xx1 * cos(theta) - yy1 * sin(theta)) + cx;
     xx2 = (int)(xx2 * cos(theta) - yy2 * sin(theta)) + cx;
