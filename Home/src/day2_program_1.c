@@ -27,13 +27,13 @@ void triangleRotate(int xx1, int xx2, int xx3, int yy1, int yy2, int yy3, int an
     // yy2 = yy2 - cy;
     // yy3 = yy3 - cy;
 
-    xx1 = (int)(xx1 * cos(theta) - yy1 * sin(theta)) + cx;
-    xx2 = (int)(xx2 * cos(theta) - yy2 * sin(theta)) + cx;
-    xx3 = (int)(xx3 * cos(theta) - yy3 * sin(theta)) + cx;
+    xx1 = (xx1 * cos(theta) - yy1 * sin(theta));
+    xx2 = (xx2 * cos(theta) - yy2 * sin(theta));
+    xx3 = (xx3 * cos(theta) - yy3 * sin(theta));
 
-    yy1 = (int)(yy1 * cos(theta) + xx1 * sin(theta)) + cy;
-    yy2 = (int)(yy2 * cos(theta) + xx2 * sin(theta)) + cy;
-    yy3 = (int)(yy3 * cos(theta) + xx3 * sin(theta)) + cy;
+    yy1 = (yy1 * cos(theta) + xx1 * sin(theta));
+    yy2 = (yy2 * cos(theta) + xx2 * sin(theta));
+    yy3 = (yy3 * cos(theta) + xx3 * sin(theta));
     cleardevice();
     // line for xx1, yy1, xx2, yy2
     line(xx1, yy1, xx2, yy2);
@@ -167,11 +167,11 @@ int main()
         case 1:
             printf("Enter the scaling factor(integer)>1\n");
 
-            scanf("%d", &scalingFactorX_triangle);
-            scanf("%d", &scalingFactorY_triangle);
+            scanf("%d", &scalingFactor);
+            //  scanf("%d", &scalingFactorY_triangle);
             cleardevice();
 
-            rectangle(x1 - (((y2 - y1) / 4) * scalingFactor), y1 - (((x2 - x1) / 4) * scalingFactor), x2 + (((y2 - y1) / 4) * scalingFactor), y2 + (((x2 - x1) / 4) * scalingFactor));
+            rectangle(x1 - (((x2 - x1) / 2) * scalingFactor), y1 - (((y2 - y1) / 2) * scalingFactor), x2 + (((x2 - x1) / 2) * scalingFactor), y2 + (((y2 - y1) / 2) * scalingFactor));
             break;
         case 2:
             printf("Enter the slide amount(integer positive or negative)\n");
