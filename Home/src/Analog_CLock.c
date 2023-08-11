@@ -1,4 +1,15 @@
-
+/*----------------------------------------------------------------
+AUTHOR: spexcher
+Name: Gourab Modak
+email: gm2623@cse.jgec.ac.in
+Institution: Jalpaiguri Government Engineering College (B. Tech UG CSE 4 year)
+Github: https://github.com/gauravthedeveloper/
+linkedin : https://www.linkedin.com/in/gourabmodak/
+codeforces : https://codeforces.com/profile/sectumsempra07/
+codechef : https://www.codechef.com/users/sectumsempra07/
+leetcode : https://leetcode.com/sectumsempra07/
+--------------------------------------------------------------------
+*/
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
@@ -37,7 +48,7 @@ void minSecCalc(int radius, int midx, int midy, int secx[60], int secy[60])
     int i, j = 0, x, y;
     char str[32];
 
-    /* 15 position(min/sec - 12 to 3) in first quadrant of clock  */
+   
     secx[j] = midx, secy[j++] = midy - radius;
 
     for (i = 96; i < 180; i = i + 6)
@@ -46,7 +57,7 @@ void minSecCalc(int radius, int midx, int midy, int secx[60], int secy[60])
         secy[j++] = midy - (radius * sin((i * 3.14) / 180));
     }
 
-    /* 15 positions(min or sec - 3 to 6) in second quadrant of clock */
+ 
     secx[j] = midx + radius, secy[j++] = midy;
     for (i = 186; i < 270; i = i + 6)
     {
@@ -54,7 +65,7 @@ void minSecCalc(int radius, int midx, int midy, int secx[60], int secy[60])
         secy[j++] = midy - (radius * sin((i * 3.14) / 180));
     }
 
-    /* 15 positions(min or sec - 6 to 9) in third quadrant of clock */
+  
     secx[j] = midx, secy[j++] = midy + radius;
     for (i = 276; i < 360; i = i + 6)
     {
@@ -62,7 +73,7 @@ void minSecCalc(int radius, int midx, int midy, int secx[60], int secy[60])
         secy[j++] = midy - (radius * sin((i * 3.14) / 180));
     }
 
-    /* 15 positions(min or sec - 9 to 12) in fourth quadrant of clock */
+  
     secx[j] = midx - radius, secy[j++] = midy;
     for (i = 6; i < 90; i = i + 6)
     {
@@ -75,7 +86,7 @@ void minSecCalc(int radius, int midx, int midy, int secx[60], int secy[60])
 
 int main()
 {
-    /* request auto detection */
+   
     int gdriver = DETECT, gmode, err, tmp;
     int i, j, midx, midy, radius, hr, min, sec;
     int x[12], y[12], minx[60], miny[60];
@@ -85,35 +96,35 @@ int main()
     time_t t1;
     struct tm *data;
 
-    /* initialize graphic mode */
+  
     char dataaa[] = "C:\\TDM-GCC-32\\lib\\libbgi.a"; // static file
     initgraph(&gdriver, &gmode, dataaa);
     err = graphresult();
 
     if (err != grOk)
     {
-        /* error occurred */
+       
         printf("Graphics Error: %s",
                grapherrormsg(err));
         return 0;
     }
 
-    /* mid position in x and y -axis */
+  
     midx = getmaxx() / 2;
     midy = getmaxy() / 2;
 
     radius = 200;
 
-    /* position to locate numbers in clock */
+  
     calcPoints(radius - 30, midx, midy, x, y);
 
-    /* gets position for hour needle */
+
     calcPoints(radius - 90, midx, midy, hrx, hry);
 
-    /* gets position for minute needle */
+    
     minSecCalc(radius - 50, midx, midy, minx, miny);
 
-    /* gets position for second needle */
+   
     minSecCalc(radius - 70, midx, midy, secx, secy);
 
     while (!kbhit())
@@ -121,10 +132,10 @@ int main()
         setlinestyle(SOLID_LINE, 1, 3);
         settextstyle(TRIPLEX_FONT, 0, 3);
 
-        /* draws frame of the clock */
+      
         circle(midx, midy, radius);
 
-        /* place the numbers  in clock */
+       
         for (j = 0; j < 12; j++)
         {
             if (j == 0)
@@ -140,30 +151,30 @@ int main()
             outtext(str);
         }
 
-        /* get the current time using time() API */
+       
         t1 = time(NULL);
         data = localtime(&t1);
 
-        /* draw the second needle in clock */
+        
         sec = data->tm_sec % 60;
         line(midx, midy, secx[sec], secy[sec]);
 
-        /* draw the minute needle in clock */
+      
         min = data->tm_min % 60;
         line(midx, midy, minx[min], miny[min]);
 
-        /* draw the hour needle in clock */
+       
         hr = data->tm_hour % 12;
         line(midx, midy, hrx[hr], hry[hr]);
 
-        /* sleep for a second */
+      
         delay(1000);
         cleardevice();
     }
 
     getch();
 
-    /* deallocate memory allocated for graphic screen */
+  
     closegraph();
     return 0;
 }

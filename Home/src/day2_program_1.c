@@ -21,11 +21,6 @@ void triangleRotate(int xx1, int xx2, int xx3, int yy1, int yy2, int yy3, int an
     int cy = (int)(yy1 + yy2 + yy3) / 3;
     double theta = (double)(angle % 180) * M_PI / 180;
     // xx1 = xx1 - cx;
-    // xx2 = xx2 - cx;
-    // xx3 = xx3 - cx;
-    // yy1 = yy1 - cy;
-    // yy2 = yy2 - cy;
-    // yy3 = yy3 - cy;
 
     xx1 = (xx1 * cos(theta) - yy1 * sin(theta));
     xx2 = (xx2 * cos(theta) - yy2 * sin(theta));
@@ -46,30 +41,23 @@ void triangleRotate(int xx1, int xx2, int xx3, int yy1, int yy2, int yy3, int an
 }
 void rectangleRotate(int cx, int cy, int w, int h, int angle = 0)
 {
-    // cx and cy are the x and y coordinates of the center of the rect
-    // w is width and h is height
 
-    // converts from degree to radians
-    double theta = (double)(angle % 180) * M_PI / 180;
+    double theta = (double)(angle % 180) * M_PI / 1800;
     int dx = w / 2;
     int dy = h / 2;
 
-    // Coordinates of all the vertices of the rectangle after rotation
     int point[8] = {
-        (int)(-dx * cos(theta) - dy * sin(theta) + cx), // x coord
-        (int)(-dx * sin(theta) + dy * cos(theta) + cy), // y coord
-        (int)(dx * cos(theta) - dy * sin(theta) + cx),  // x coord
-        (int)(dx * sin(theta) + dy * cos(theta) + cy),  // y coord
-        (int)(dx * cos(theta) + dy * sin(theta) + cx),  // x coord
-        (int)(dx * sin(theta) - dy * cos(theta) + cy),  // y coord
-        (int)(-dx * cos(theta) + dy * sin(theta) + cx), // x coord
-        (int)(-dx * sin(theta) - dy * cos(theta) + cy)  // y coord
-    };
+        (int)(-dx * cos(theta) - dy * sin(theta) + cx),
+        (int)(-dx * sin(theta) + dy * cos(theta) + cy),
+        (int)(dx * cos(theta) - dy * sin(theta) + cx),
+        (int)(dx * sin(theta) + dy * cos(theta) + cy),
+        (int)(dx * cos(theta) + dy * sin(theta) + cx),
+        (int)(dx * sin(theta) - dy * cos(theta) + cy),
+        (int)(-dx * cos(theta) + dy * sin(theta) + cx),
+        (int)(-dx * sin(theta) - dy * cos(theta) + cy)};
 
     for (int i = 0; i < 8; i += 2)
-    {
         line(point[i], point[i + 1], point[(i + 2) % 8], point[(i + 3) % 8]);
-    }
 }
 int main()
 {
@@ -77,7 +65,7 @@ int main()
     double angle, theta;
     int dx, dy, cx, cy;
     int point[8];
-    printf("What do youwant to draw\n1:Circle\n2:Rectangle\n3:Triangle\n");
+    printf("What do you want to draw\n1:Circle\n2:Rectangle\n3:Triangle\n");
     scanf("%d", &choice);
     int x = 0, y = 0, radius = 0;
     int x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0;
@@ -85,7 +73,7 @@ int main()
     {
         {
         case 1:
-            printf("input three integers being coordinates of x and y and the radius\n");
+            printf("Input three integers being coordinates of x and y and the radius\n");
 
             scanf("%d", &x);
             scanf("%d", &y);
@@ -98,7 +86,7 @@ int main()
             scanf("%d", &y1);
             scanf("%d", &x2);
             scanf("%d", &y2);
-            // rectangle(x1, y1, x2, y2);
+
             break;
         case 3:
             printf("input 6 integers being coordinates of the triangle\n");
@@ -109,7 +97,7 @@ int main()
             scanf("%d", &y2);
             scanf("%d", &x3);
             scanf("%d", &y3);
-            // rectangle(x1, y1, x2, y2);
+
             break;
         default:
             break;
@@ -168,7 +156,7 @@ int main()
             printf("Enter the scaling factor(integer)>1\n");
 
             scanf("%d", &scalingFactor);
-            //  scanf("%d", &scalingFactorY_triangle);
+
             cleardevice();
 
             rectangle(x1 - (((x2 - x1) / 2) * scalingFactor), y1 - (((y2 - y1) / 2) * scalingFactor), x2 + (((x2 - x1) / 2) * scalingFactor), y2 + (((y2 - y1) / 2) * scalingFactor));
@@ -235,7 +223,6 @@ int main()
             // line for x1, y1, x2, y2
             line(x1, y1, x2, y2);
 
-            // line for x1, y1, x2, y2
             line(x1, y1, x3, y3);
 
             // line for x1, y1, x2, y2
@@ -255,7 +242,6 @@ int main()
             // line for x1, y1, x2, y2
             line(x1, y1, x3, y3);
 
-            // line for x1, y1, x2, y2
             line(x2, y2, x3, y3);
             break;
         case 3:
@@ -266,10 +252,9 @@ int main()
             y2 = y2 + scalingFactorX_triangle;
 
             cleardevice();
-            // line for x1, y1, x2, y2
+
             line(x1, y1, x2, y2);
 
-            // line for x1, y1, x2, y2
             line(x1, y1, x3, y3);
 
             // line for x1, y1, x2, y2
