@@ -19,7 +19,7 @@ void triangleRotate(int xx1, int xx2, int xx3, int yy1, int yy2, int yy3, int an
 {
     int cx = (int)(xx1 + xx2 + xx3) / 3;
     int cy = (int)(yy1 + yy2 + yy3) / 3;
-    double theta = (double)(angle % 180) * M_PI / 180;
+    double theta = (double)(angle % 180) * M_PI / 1800;
     // xx1 = xx1 - cx;
 
     xx1 = (xx1 * cos(theta) - yy1 * sin(theta));
@@ -107,6 +107,7 @@ int main()
     char data[] = "C:\\TDM-GCC-32\\lib\\libbgi.a"; // static file
     int scalingFactor, scalingFactorX_triangle, scalingFactorY_triangle;
     initgraph(&gd, &gm, data);
+    setcolor(13);
     if (choice == 1)
     {
         circle(x, y, radius);
